@@ -1,0 +1,276 @@
+.hero {
+  position: relative;
+
+  overflow: hidden;
+
+  width: 100%;
+  min-height: 893px;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+
+  color: $c-white;
+
+  background-color: #2c2c2c;
+
+  @include on-desktop-small {
+    display: flex;
+    align-items: center;
+
+    min-height: 100vh;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  &__container {
+    position: relative;
+
+    width: 100%;
+    max-width: 1600px;
+    height: 893px; // Set exact mobile height
+    margin: 0 auto;
+    padding: 0; // We position elements absolutely on mobile
+
+    @include on-desktop-small {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      height: auto;
+      padding: 0 40px;
+    }
+  }
+
+  &__content {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    left: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    width: auto;
+    height: 209px;
+
+    @include on-tablet {
+      top: 124px;
+      right: 41px;
+      left: 41px;
+      height: 126px;
+    }
+
+    @include on-desktop-small {
+      position: static;
+
+      display: flex;
+      flex-direction: column;
+
+      width: 50%;
+      height: auto;
+      margin-top: 0;
+    }
+  }
+
+  &__title {
+    width: auto;
+    height: 96px;
+    margin: 0 0 32px; // 32px spacing to description
+
+    font-family: $ff-headings;
+    font-size: 52px;
+    font-weight: 600;
+    line-height: 48px; // Exactly 96px height for 2 lines of 52px font
+    color: $c-white;
+    letter-spacing: -2px;
+
+    @include on-tablet {
+      height: 48px;
+      margin-bottom: 24px;
+      line-height: 48px;
+    }
+
+    @include on-desktop-small {
+      width: auto;
+      height: auto;
+      margin-bottom: 24px;
+
+      font-size: 80px;
+      line-height: 1.1;
+    }
+
+    @include on-design {
+      font-size: 100px;
+    }
+  }
+
+  &__description {
+    width: auto;
+    height: 81px;
+    margin: 0;
+
+    font-family: $ff-primary;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 27px; // 150% line-height (3 lines fit in 81px)
+    color: $c-white;
+    letter-spacing: 0;
+
+    @include on-tablet {
+      height: 54px;
+      line-height: 27px;
+    }
+
+    @include on-desktop-small {
+      width: auto;
+      max-width: 600px;
+      height: auto;
+      margin-bottom: 40px;
+
+      font-size: 20px;
+      line-height: 1.6;
+      color: $c-grey;
+    }
+  }
+
+  &__button {
+    position: absolute;
+    top: 381px;
+    right: 20px;
+    left: 20px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: auto;
+    height: 50px;
+    border-radius: 8px;
+
+    font-weight: 700;
+    color: $c-white;
+
+    background-color: #2060f6;
+
+    &:hover {
+      transform: translateY(-2px);
+      background-color: #0a4ae0;
+      box-shadow: 0 4px 12px rgba(32, 96, 246, 0.3);
+    }
+
+    @include on-tablet {
+      top: 306px;
+      left: 41px;
+      width: 264px;
+      height: 50px;
+    }
+
+    @include on-desktop-small {
+      position: static;
+
+      width: auto;
+      height: auto;
+      padding: 16px 32px;
+      border-radius: 0;
+
+      color: $c-black;
+
+      background-color: $c-accent;
+
+      &:hover {
+        background-color: $c-accent-hover;
+        box-shadow: 0 4px 12px rgba(86, 204, 242, 0.3);
+      }
+    }
+  }
+
+  &__photo-container {
+    position: absolute;
+    top: 503px;
+    right: 0;
+    left: 0;
+
+    width: 100%;
+    height: 390px;
+
+    @include on-desktop-small {
+      position: relative;
+      width: 45%;
+      height: 600px;
+    }
+  }
+
+  &__slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__slide {
+    pointer-events: none;
+
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+
+    transition: opacity 0.5s ease-in-out;
+
+    &--active {
+      pointer-events: auto;
+      z-index: 2;
+      opacity: 1;
+    }
+  }
+
+  &__slide-content {
+    position: absolute;
+    top: 298px; // 801px (intro top) - 503px (photo top)
+    right: 20px;
+    left: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    width: auto;
+
+    @include on-desktop-small {
+      top: auto;
+      bottom: 88px; // 40px (photo bottom gap) + 32px (buttons height) + 16px (gap)
+      left: 40px;
+
+      gap: 16px;
+
+      width: 320px;
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    object-fit: cover;
+
+    @include on-desktop-small {
+      border-radius: 40px;
+    }
+  }
+
+  &__br {
+    display: none;
+
+    @include on-tablet {
+      display: inline;
+    }
+
+    @include on-desktop-small {
+      display: none;
+    }
+  }
+}

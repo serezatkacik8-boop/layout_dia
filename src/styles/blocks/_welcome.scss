@@ -1,0 +1,80 @@
+.welcome {
+  padding-top: $section-gap-mobile; // Spacing of 120px from Hero
+  background-color: #f0f4fa;
+
+  @include on-tablet {
+    padding-top: 148px;
+  }
+
+  @include on-desktop-small {
+    padding-top: 160px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: auto;
+    height: auto;
+    min-height: 402px;
+    margin: 0 20px;
+
+    @include on-tablet {
+      width: 558px;
+      height: 244px;
+      min-height: auto;
+      margin-right: auto;
+      margin-left: 41px;
+    }
+
+    @include on-desktop-small {
+      flex-direction: row;
+      gap: 80px;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      width: 100%;
+      max-width: 1600px;
+      height: auto;
+      min-height: auto;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+  }
+
+  &__title {
+    margin: 0 0 24px;
+
+    font-family: $ff-headings;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #253757;
+    text-align: center;
+
+    @include on-desktop-small {
+      width: 40%;
+      margin: 0;
+      font-size: 48px;
+      text-align: left;
+    }
+  }
+
+  &__text {
+    margin: 0;
+
+    font-family: $ff-primary;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #6c788b;
+    text-align: center;
+
+    @include on-desktop-small {
+      width: 55%;
+      font-size: 24px;
+      text-align: left;
+    }
+  }
+}
