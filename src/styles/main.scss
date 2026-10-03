@@ -1,5 +1,4 @@
 @import 'utils';
-@import 'fonts';
 @import 'typography';
 
 // Base Resets
@@ -26,6 +25,25 @@ body {
   color: $c-dark;
 
   background-color: #f0f4fa;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 21px;
+
+  @include on-tablet {
+    padding: 0 41px;
+  }
+
+  @include on-desktop-small {
+    padding: 0 54px;
+  }
+
+  @include on-design {
+    max-width: 1600px;
+    padding: 0 227px;
+  }
 }
 
 ul,
@@ -73,10 +91,8 @@ textarea {
 // Blocks imports will be added here
 @import 'blocks/header';
 @import 'blocks/hero';
-@import 'blocks/slider';
 @import 'blocks/welcome';
 @import 'blocks/what-we-do';
 @import 'blocks/process';
 @import 'blocks/testimonials';
-@import 'blocks/cta-block';
 @import 'blocks/footer';

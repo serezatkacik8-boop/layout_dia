@@ -1,379 +1,181 @@
 .header {
   position: absolute;
-  z-index: 100;
+  z-index: 10;
   top: 0;
   left: 0;
 
   width: 100%;
-  padding: 0; // Padding is removed on mobile because we use exact positioning
 
-  background-color: transparent;
+  background-color: #2c2c2c;
 
-  transition: background-color 0.3s ease-in-out;
-
-  &--open {
-    position: fixed;
-  }
-
-  @include on-desktop-small {
-    padding: 32px 40px;
-  }
-
-  &__container {
+  &__menu {
     position: relative;
 
-    width: 100%;
-    max-width: 1600px;
-    height: 64px; // Gives height on mobile for absolute elements
-    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: -1px;
+    padding: 21px 0 45px;
+
+    @include on-desktop-small {
+      padding: 49px 0 48px;
+    }
+  }
+
+  &__menu--logo {
+    width: 45px;
+    height: 25px;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+
+  &__menu--listL {
+    display: none;
 
     @include on-desktop-small {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: auto;
+      gap: 48px;
     }
   }
 
-  &__logo {
-    position: absolute;
-    z-index: 102;
-    top: 20px;
-    left: 20px;
-
-    display: block;
-
-    width: 46px;
-    height: 28px;
-
-    transition: opacity 0.3s;
-
-    &:hover {
-      opacity: 0.8;
-    }
-
-    @include on-tablet {
-      left: 41px;
-    }
-
-    @include on-desktop-small {
-      position: static;
-      width: auto;
-      height: auto;
-    }
+  &__menu--item {
+    display: flex;
   }
 
-  &__nav {
+  &__mobile {
     position: fixed;
-    z-index: 101;
+    z-index: 20;
     top: 0;
-    right: -100%;
+    left: 0;
+    transform: translateY(-100%);
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 32px;
+    align-items: flex-start;
 
-    width: 100%;
+    width: 100vw;
     height: 100vh;
-    padding: 100px 40px 40px;
+    padding: 49px 42px 0;
 
-    background-color: rgba(15, 16, 17, 0.95);
-    backdrop-filter: blur(20px);
+    background-color: #2c2c2c;
 
-    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.3s ease;
 
-    // When header is open, nav slides in
-    .header--open & {
-      right: 0;
-    }
-
-    @include on-desktop-small {
-      position: static;
-      z-index: auto;
-
-      display: flex;
-      flex-direction: row;
-      gap: 40px;
-      align-items: center;
-      justify-content: flex-end;
-
-      width: auto;
-      height: auto;
-      padding: 0;
-
-      background-color: transparent;
-      backdrop-filter: none;
-    }
-  }
-
-  &__cta-btn {
-    position: absolute;
-    z-index: 102;
-    top: 18px;
-    right: 20px;
-    left: auto;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 67px;
-    height: 20px;
-
-    font-family: $ff-headings;
-    font-size: 13px;
-    font-weight: 700;
-    line-height: 1.5;
-    color: $c-white;
-    text-align: center;
-    text-transform: none;
-    letter-spacing: 3px;
-    white-space: nowrap;
-
-    transition: opacity 0.3s ease-in-out;
-
-    &::after {
-      content: '';
-
-      position: absolute;
-      top: 28px; // 18px top + 28px = 46px top coordinate for the line
-      left: 0;
-
-      width: 100%;
-      height: 2px;
-      border-radius: 4px;
-
-      background-color: #2060f6;
-    }
-
-    &:hover {
-      opacity: 0.8;
-    }
-
-    @include on-tablet {
-      top: 18px;
-      right: 41px;
-      left: auto;
-    }
-
-    @include on-desktop-small {
-      position: static;
-
-      width: auto;
-      height: auto;
-      padding: 10px 20px;
-      border-radius: 0;
-
-      font-size: 12px;
-      font-weight: 700;
-      color: $c-black;
-      letter-spacing: 1px;
-
-      background-color: $c-accent;
-
-      &::after {
-        display: none; // hide the line on desktop
-      }
-
-      &:hover {
-        transform: translateY(-2px);
-        opacity: 1;
-        background-color: $c-accent-hover;
-        box-shadow: 0 4px 12px rgba(86, 204, 242, 0.3);
-      }
-
-      &:active {
-        transform: translateY(0);
-      }
-    }
-  }
-
-  &__burger {
-    cursor: pointer;
-
-    position: absolute;
-    z-index: 102;
-    top: 24px;
-    left: 98px;
-
-    width: 24px;
-    height: 24px;
-    padding: 0;
-    border: none;
-
-    background: transparent;
-
-    transition: transform 0.3s ease-in-out;
-
-    .burger__icon {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-
-    // Toggle menu state transitions
-    .header--open & {
-      transform: rotate(90deg);
-    }
-
-    @include on-tablet {
-      left: 119px;
+    &:target {
+      transform: translateY(0);
     }
 
     @include on-desktop-small {
       display: none;
     }
   }
-}
 
-.logo {
-  &__img {
-    display: block;
-    width: 46px;
-    height: 28px;
-
-    @include on-desktop-small {
-      width: auto;
-      height: auto;
-    }
-  }
-}
-
-.nav {
-  &__list {
+  &__mobile--listL {
     display: flex;
     flex-direction: column;
-    gap: 32px;
-    margin-top: 40px;
+    gap: 24px;
+    align-items: flex-start;
 
-    @include on-desktop-small {
-      flex-direction: row;
-      gap: 32px;
+    padding-top: 32px;
+  }
+
+  @media (max-width: 1023px) {
+    &__mobile .menu__list {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
       margin-top: 0;
     }
-  }
 
-  &__item {
-    transform: translateY(20px);
-
-    font-family: $ff-headings;
-    font-size: 13px;
-    font-weight: 700;
-    line-height: 1.5;
-    letter-spacing: 3px;
-
-    // Stagger animation state
-    opacity: 0;
-
-    transition:
-      opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-
-    .header--open & {
-      transform: translateY(0);
-      opacity: 1;
-
-      &:nth-child(1) {
-        transition-delay: 0.1s;
-      }
-      &:nth-child(2) {
-        transition-delay: 0.18s;
-      }
-      &:nth-child(3) {
-        transition-delay: 0.26s;
-      }
-      &:nth-child(4) {
-        transition-delay: 0.34s;
-      }
-      &:nth-child(5) {
-        transition-delay: 0.42s;
-      }
+    &__mobile .header__mobile--item {
+      width: 100%;
     }
 
-    @include on-desktop-small {
-      transform: none;
-
-      font-family: $ff-primary;
-      font-size: 14px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-
-      // Reset animations on desktop
-      opacity: 1;
-
-      transition: none;
-    }
-  }
-
-  &__link {
-    color: $c-white;
-    text-transform: uppercase;
-    white-space: nowrap;
-    transition: color 0.3s ease-in-out;
-
-    &:hover,
-    &--active {
-      color: $c-accent;
-    }
-
-    @include on-desktop-small {
-      color: $c-grey;
-      text-transform: capitalize;
-
-      &:hover,
-      &--active {
-        color: $c-white;
-      }
+    &__mobile .header__mobile--link {
+      display: inline-block;
+      text-align: left;
     }
   }
 }
 
-// Global button presets for reuse
-.button {
+.icon {
   cursor: pointer;
+  display: block;
+}
 
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.icon--menu {
+  position: absolute;
+  z-index: 2;
+  top: 30px;
+  right: 0;
 
-  padding: 16px 32px;
-  border-radius: 0;
+  width: 24px;
+  height: 24px;
 
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: none;
-  letter-spacing: 1px;
-
-  transition: all 0.3s ease-in-out;
-
-  &--primary {
-    color: $c-black;
-    background-color: $c-accent;
-
-    &:hover {
-      transform: translateY(-2px);
-      background-color: $c-accent-hover;
-      box-shadow: 0 4px 12px rgba(86, 204, 242, 0.3);
-    }
-
-    &:active {
-      transform: translateY(0);
-    }
+  @include on-desktop-small {
+    display: none;
   }
+}
 
-  &--outline {
-    border: 1px solid $c-white;
-    color: $c-white;
+.icon--mobile {
+  position: absolute;
+  z-index: 2;
+  top: 51px;
+  right: 42px;
+  left: auto;
 
-    &:hover {
-      transform: translateY(-2px);
-      color: $c-black;
-      background-color: $c-white;
-    }
+  font-family: $ff-headings;
+  font-size: 24px;
+  line-height: 1;
+  color: $c-white;
 
-    &:active {
-      transform: translateY(0);
-    }
+  @include on-desktop-small {
+    display: none;
   }
+}
+
+.icon__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.menu--link,
+.menu__link {
+  font-family: $ff-headings;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 150%;
+  color: $c-white;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.menu--link {
+  padding-bottom: 8px;
+  border-bottom: 2px solid transparent;
+  border-radius: 1px;
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-color: #2060f6;
+  }
+}
+
+.menu__list {
+  display: none;
+
+  @include on-desktop-small {
+    display: flex;
+  }
+}
+
+.menu__list .menu--link {
+  border-bottom-color: #2060f6;
 }

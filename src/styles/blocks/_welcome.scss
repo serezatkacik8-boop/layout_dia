@@ -1,80 +1,88 @@
-.welcome {
-  padding-top: $section-gap-mobile; // Spacing of 120px from Hero
+.about {
   background-color: #f0f4fa;
+}
 
-  @include on-tablet {
-    padding-top: 148px;
+.about__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 0 auto;
+  padding-block: 148px;
+}
+
+@media (max-width: 639px) {
+  .about__container {
+    padding-block: 72px;
   }
 
-  @include on-desktop-small {
-    padding-top: 160px;
+  .about__description {
+    font-size: 18px;
   }
+}
 
-  &__container {
+.about__title {
+  margin: 0 0 16px;
+
+  font-family: $ff-headings;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 150%;
+  color: #253757;
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .about__container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    padding-block: 160px;
+  }
 
+  .about__title {
     width: auto;
-    height: auto;
-    min-height: 402px;
-    margin: 0 20px;
-
-    @include on-tablet {
-      width: 558px;
-      height: 244px;
-      min-height: auto;
-      margin-right: auto;
-      margin-left: 41px;
-    }
-
-    @include on-desktop-small {
-      flex-direction: row;
-      gap: 80px;
-      align-items: flex-start;
-      justify-content: space-between;
-
-      width: 100%;
-      max-width: 1600px;
-      height: auto;
-      min-height: auto;
-      margin: 0 auto;
-      padding: 0 40px;
-    }
-  }
-
-  &__title {
-    margin: 0 0 24px;
-
-    font-family: $ff-headings;
-    font-size: 32px;
-    font-weight: 600;
-    line-height: 1.5;
-    color: #253757;
+    margin: 0 0 16px;
+    font-size: 48px;
     text-align: center;
-
-    @include on-desktop-small {
-      width: 40%;
-      margin: 0;
-      font-size: 48px;
-      text-align: left;
-    }
   }
 
-  &__text {
+  .about__description {
+    width: auto;
+    max-width: 754px;
     margin: 0;
 
-    font-family: $ff-primary;
-    font-size: 22px;
-    font-weight: 600;
-    line-height: 1.5;
-    color: #6c788b;
+    font-size: 24px;
     text-align: center;
+  }
+}
 
-    @include on-desktop-small {
-      width: 55%;
-      font-size: 24px;
-      text-align: left;
-    }
+.about__description {
+  margin: 0;
+
+  font-family: $ff-primary;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 150%;
+  color: #6c788b;
+  text-align: center;
+
+  @include on-desktop-small {
+    max-width: 754px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about__description {
+    max-width: 754px;
+    margin: 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 639px) {
+  .about__description {
+    font-size: 18px;
   }
 }
