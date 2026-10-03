@@ -128,6 +128,17 @@
   background: transparent;
 }
 
+.contact__send--inputs:autofill,
+.contact__send--inputs:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #2c2c2c inset;
+  box-shadow: 0 0 0 1000px #2c2c2c inset;
+
+  -webkit-text-fill-color: #fff;
+  caret-color: #fff;
+  background-color: transparent;
+  transition: background-color 9999s ease-out;
+}
+
 .contact__send--inputs:focus {
   border-bottom-color: #2060f6;
 }
@@ -137,7 +148,7 @@
 }
 
 .contact__send--message {
-  resize: vertical;
+  resize: none;
   height: 90px;
 }
 
